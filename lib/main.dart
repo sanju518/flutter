@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutterspod/constants/app_colors.dart';
 import 'package:flutterspod/views/home_page.dart';
+import 'package:flutterspod/views/response.dart';
 import 'package:flutterspod/views/sample.dart';
+import 'package:get/get.dart';
 
 
 void main (){
@@ -14,7 +16,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light(
           useMaterial3: true
@@ -35,6 +37,8 @@ class Home extends StatelessWidget {
       //home: HomePage(),
       //home: exercise(),
       //home: MyApp(),
+     // home: Sample(),
+      home: ResponsePage(),
     );
   }
 

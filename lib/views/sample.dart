@@ -103,4 +103,60 @@
 //   }
 // }
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class Sample extends StatelessWidget{
+  const Sample({super.key});
+
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            ListTile(
+              leading: CircleAvatar(
+                radius: 30,
+                backgroundImage: NetworkImage('https://plus.unsplash.com/premium_photo-1695725168368-22faab08f1e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=60'),
+              ),
+              title: Text('By Author'),
+              subtitle: Text('Hello World'),
+              trailing: Icon(CupertinoIcons.chevron_forward),
+            ),
+            ListTile(
+              leading: CircleAvatar(
+                radius: 30,
+                backgroundImage: NetworkImage('https://plus.unsplash.com/premium_photo-1695725168368-22faab08f1e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=60'),
+              ),
+              title: Text('By Author'),
+              subtitle: Text('Hello World'),
+              trailing: Icon(CupertinoIcons.chevron_forward),
+            ),
+            ListTile(
+              leading: CircleAvatar(
+                radius: 30,
+                backgroundImage: NetworkImage('https://plus.unsplash.com/premium_photo-1695725168368-22faab08f1e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=60'),
+              ),
+              title: Text('By Author'),
+              subtitle: Text('Hello World'),
+              trailing: Icon(CupertinoIcons.chevron_forward),
+            ),
+            ListTile(
+              leading: CircleAvatar(
+                radius: 30,
+                backgroundImage: NetworkImage('https://plus.unsplash.com/premium_photo-1695725168368-22faab08f1e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=60'),
+              ),
+              title: Text('By Author'),
+              subtitle: Text('Hello World'),
+              trailing: Icon(CupertinoIcons.chevron_forward),
+            ),
+          ],
+        ),
+      )
+    );
+  }
+
+
+}
 
