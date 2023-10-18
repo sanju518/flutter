@@ -13,30 +13,58 @@ class ResponsePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(),
-        body: SafeArea(
-          child: Column(
-            children: [
-              Container(
-                height: 200,
-                width: 400,
-                color: Colors.green,
-                child: LayoutBuilder(
-                  builder: (context, contrs){
-                    return Container(
-                      color: Colors.black,
-                      width: contrs.maxWidth * 0.5,
-                      height: contrs.maxHeight * 0.2,
-                    );
-
-                  }
+        body: Column(
+          children: [
+            AspectRatio(
+              aspectRatio: 16/9,
+                child: Image.network(
+                    'https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxzZWFyY2h8MXx8bmF0dXJlfGVufDB8MHwwfHx8MA%3D%3D&w=800',
+                  fit: BoxFit.cover,
+                )
+            ),
 
 
-                ),
-              ),
-            ],
-          ),
-        )
-    );
+            // Container(
+            //   color: Colors.amber,
+            //   height: 100,
+            //   width: 100,
+            //   child: Text('khgduyrhfskjkjxhgjuyewudhjsyfuesfhesiufishfisuffjiu', maxLines: 3,),
+            // ),
+            //
+            // Container(
+            //   height: 100,
+            //     color: Colors.red,
+            //     child: FittedBox(
+            //         child: Text('kgjguiejldkfiseufhesjfiusiudchs', style: TextStyle(fontSize: 70),)),
+            // ),
+            // Container(
+            //       height: 200,
+            //       width: width * 0.5,
+            //       padding: EdgeInsets.only(bottom: 10),
+            //       color: Colors.green,
+            //       child: LayoutBuilder(
+            //         builder: (context, contrs){
+            //           return Row(
+            //             crossAxisAlignment: CrossAxisAlignment.start,
+            //             children: [
+            //               Container(
+            //                height: contrs.maxHeight ,
+            //                 width: 100,
+            //                 color: Colors.red,
+            //               ),
+            //             ],
+            //           );
+            //
+            //         }
+            //
+            //
+            //       ),
+            //     ),
+          ],
+        ),
+
+        );
+
   }
 }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterspod/constants/app_sizes.dart';
 import 'package:flutterspod/constants/book_data.dart';
 import 'package:flutterspod/views/DetailPage.js.dart';
@@ -54,8 +55,8 @@ class HomePage extends StatelessWidget {
           //   ),
           // ),
            Container(
-             height: 250,
-             width: 400,
+             height: 250.h,
+             width: 400.w,
              color: Colors.amber,
              child: Image.network(
               fit: BoxFit.cover,
@@ -69,15 +70,15 @@ class HomePage extends StatelessWidget {
         AppSizes.gapH16,
 
           Container(
-              height: 250,
+              height: 250.h,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: books.length,
                   itemBuilder: (context, index) {
                     final book = books[index];
                     return Container(
-                        width: 380,
-                        margin: EdgeInsets.only(right: 10),
+                        width: 380.w,
+                        margin: EdgeInsets.only(right: 10.w),
                         child: InkWell(
                           onTap: (){
                             Get.to(() => DetailPage(book: book), transition: Transition.leftToRight);
@@ -87,7 +88,7 @@ class HomePage extends StatelessWidget {
                                 Align(
                                   alignment: Alignment.bottomCenter,
                                   child: Container(
-                                    height: 200,
+                                    height: 200.h,
                                     child: Card(
                                       child: Row(
                                         children:[
@@ -95,7 +96,7 @@ class HomePage extends StatelessWidget {
                                           Expanded(
                                             flex: 2,
                                             child: Padding(
-                                              padding: const EdgeInsets.only(left: 20, right: 10),
+                                              padding: EdgeInsets.only(left: 20.w, right: 10.w),
                                               child: Column(
                                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,8 +124,14 @@ class HomePage extends StatelessWidget {
                                   left: 15,
                                     bottom: 20,
                                     child: ClipRRect(
-                                       borderRadius: BorderRadius.circular(10),
-                                        child: Image.network(book.imageUrl, height: 200,)))
+                                       borderRadius: BorderRadius.circular(10.r),
+                                        child: Image.network(
+                                          book.imageUrl,
+                                          height: 200.h,
+                                          width: 100.w,
+                                          fit: BoxFit.fill,
+                                        )
+                                    ))
                               ]
                           ),
                         )
@@ -133,11 +140,11 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10,),
-            child: Text('you may also like', style: TextStyle(fontSize: 25),),
+            padding:  EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w,),
+            child: Text('you may also like', style: TextStyle(fontSize: 25.sp),),
           ),
           Container(
-              height: 200,
+              height: 200.h,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: books.length,
@@ -145,12 +152,12 @@ class HomePage extends StatelessWidget {
                     final book = books[index];
                     return Container(
                       margin:EdgeInsets.only(right: 10) ,
-                      height: 100,
-                      width: 100,
+                      height: 100.h,
+                      width: 100.w,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                         Image.network(book.imageUrl, height: 100, width: 100, fit: BoxFit.cover),
+                         Image.network(book.imageUrl, height: 100.h, width: 100.w, fit: BoxFit.cover),
                          Text(book.title),
                          Text(book.genre),
 
