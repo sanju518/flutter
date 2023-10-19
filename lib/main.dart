@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterspod/constants/app_colors.dart';
 import 'package:flutterspod/views/home_page.dart';
-import 'package:flutterspod/views/response.dart';
-import 'package:flutterspod/views/sample.dart';
 import 'package:get/get.dart';
 
 
 void main (){
-  runApp(Home());
+  runApp(ProviderScope(child: Home()));
 }
 
 
@@ -19,8 +18,8 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
-    print(h);
-    print(w);
+
+
     return ScreenUtilInit(
       designSize: Size(w, h),
       minTextAdapt: true,
