@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterspod/provider/count_provider.dart';
+//import 'package:flutter_riverpod/flutter_riverpod.dart';
+//import 'package:flutterspod/provider/count_provider.dart';
 
 
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePage extends ConsumerWidget {
+
+
+
+
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int age = 0;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     print('builds');
+    final number = ref.watch(CountProvider).number;
     return Scaffold(
         body: SafeArea(
           child: Container(
@@ -24,21 +23,20 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Consumer(
-                    builder: ( context, ref, child) {
-                      final data = ref.watch(someData);
-                      return Text('data');
-                    }
-                ),
-                Text('$age', style: TextStyle(fontSize: 50),),
+                // Consumer(
+                //     builder: ( context, ref, child) {
+                //       final data = ref.watch(someData);
+                //       return Text('data');
+                //     }
+                // ),
+                Text('$number', style: TextStyle(fontSize: 50),),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextButton(onPressed: (){
-                      setState(() {
-                        age++;
+                      ref.read(CountProvider).increment();
 
-                      });
+
                     }, child: Text('Increment')),
                     TextButton(onPressed: (){}, child: Text('Decrement')),
 
