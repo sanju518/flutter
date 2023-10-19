@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterspod/provider/count_provider.dart';
-//import 'package:flutter_riverpod/flutter_riverpod.dart';
-//import 'package:flutterspod/provider/count_provider.dart';
 
 
 
@@ -21,7 +19,10 @@ class HomePage extends StatelessWidget {
             width: double.infinity,
             child: Consumer(
               builder: (context, ref, child) {
-                final number = ref.watch(CountProvider).number;
+                // final state = ref.watch(CountProvider).number;
+                // final st = ref.watch(CountProvider).nameSome;
+                final d = ref.watch(CountProvider);
+
 
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +33,8 @@ class HomePage extends StatelessWidget {
                     //       return Text('data');
                     //     }
                     // ),
-                    Text('$number', style: TextStyle(fontSize: 50),),
+                    Text(d.nameSome),
+                    Text('${d.number}', style: TextStyle(fontSize: 50),),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
