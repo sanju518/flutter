@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
 
-final someData = Provider((ref) => 'Hello World');
+final CountState = StateProvider<int>((ref) => 0);
+
+final someData = Provider<String>((ref) => 'Hello World');
 
 
 final CountProvider = ChangeNotifierProvider((ref) => CountsNotifier(ref.watch(someData)));

@@ -21,7 +21,8 @@ class HomePage extends StatelessWidget {
               builder: (context, ref, child) {
                 // final state = ref.watch(CountProvider).number;
                 // final st = ref.watch(CountProvider).nameSome;
-                final d = ref.watch(CountProvider);
+                //final d = ref.watch(CountProvider);
+                final d = ref.watch(CountState);
 
 
                 return Column(
@@ -33,13 +34,15 @@ class HomePage extends StatelessWidget {
                     //       return Text('data');
                     //     }
                     // ),
-                    Text(d.nameSome),
-                    Text('${d.number}', style: TextStyle(fontSize: 50),),
+
+                    Text('$d', style: TextStyle(fontSize: 50),),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextButton(onPressed: () {
-                          ref.read(CountProvider).increment();
+                         // ref.read(CountProvider).increment();
+                          ref.read(CountState.notifier).state = 90;
+
                         }, child: Text('Increment')),
                         TextButton(onPressed: () {}, child: Text('Decrement')),
 
