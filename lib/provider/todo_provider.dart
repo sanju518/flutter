@@ -19,7 +19,9 @@ class TodoProvider extends StateNotifier<List<Todo>>{
 
   }
 
-  void removeTodo(){
+  void removeTodo(int index){
+    state.removeAt(index);
+    state = [...state];
 
 
   }
@@ -28,7 +30,6 @@ void updateTodo(){
 
 
 }
-
 
 
 }
