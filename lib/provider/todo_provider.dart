@@ -3,11 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/todo.dart';
 
-final todoProvider = StateNotifierProvider<TodoProvider, List<Todo>>((ref) => TodoProvider([
-  Todo(DateTime: DateTime.now().toString(), todo: 'This is my task'),
-  Todo(DateTime: DateTime.now().toString(), todo: 'This is my task on Staring'),
+final todoProvider = StateNotifierProvider<TodoProvider, List<Todo>>((ref) {
+  return TodoProvider([
+    Todo(DateTime: DateTime.now().toString(), todo: 'This is my task'),
+    Todo(DateTime: DateTime.now().toString(), todo: 'This is my task on Staring'),
 
-]));
+  ]);
+});
 
 
 class TodoProvider extends StateNotifier<List<Todo>>{
@@ -25,7 +27,10 @@ class TodoProvider extends StateNotifier<List<Todo>>{
 
 
   }
-void updateTodo(){
+void updateTodo(Todo todo){
+    state = [
+      for(final t in state) t.DateTime == todo.DateTime ? todo : t
+    ];
 
 
 

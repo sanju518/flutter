@@ -65,6 +65,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterspod/constants/app_sizes.dart';
 import 'package:flutterspod/provider/todo_provider.dart';
+import 'package:flutterspod/views/widgets/update_page.dart';
+import 'package:get/get.dart';
 
 import '../models/todo.dart';
 import 'package:intl/intl.dart';
@@ -75,6 +77,14 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+
+    List data = [{'id': 1, 'd':'some'}, {'id': 2, 'd':'mone'}];
+
+    data = [
+      for(final d in data) d['id'] == 1 ? {}:d
+    ];
+    print(data);
+
     final state = ref.watch(todoProvider);
     print(state);
     return Scaffold(
@@ -121,7 +131,9 @@ class HomePage extends ConsumerWidget {
                                width: 100,
                                child: Row(
                                  children: [
-                                   IconButton(onPressed: (){}, icon: Icon(Icons.edit)),
+                                   IconButton(onPressed: (){
+                                     Get.to(() => UpdatePage(todo: todo,), transition: Transition.leftToRight);
+                                   }, icon: Icon(Icons.edit)),
                                   IconButton(onPressed: (){
                                     ref.read(todoProvider.notifier).removeTodo(index);
                                   }, icon: Icon(Icons.delete)),
