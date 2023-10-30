@@ -6,7 +6,28 @@ import 'package:flutterspod/views/home_page.dart';
 import 'package:get/get.dart';
 
 
+Future getData() async{
+  await Future.delayed(Duration(seconds: 12));
+  print('hello jii');
+  return 'hello world';
+}
+int a = 0;
+void addSome(){
+  while(a<200000000){
+    a++;
+  }
+}
+
+
+
+
 void main (){
+
+  getData();
+//addSome();
+print('hello world');
+//print(a);
+
   runApp(ProviderScope(child: Home()));
 }
 
