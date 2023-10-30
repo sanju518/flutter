@@ -8,20 +8,20 @@ import 'package:get/get.dart';
 
 //Future getData() async {
 
-class SomeError implements Exception{
-  static String get showError{
-   return 'something went wrong' ;
-  }
-}
-int getData(){
-  try {
-    final data = 'helfkidsjf';
-    final inNumber = int.parse(data);
-    return inNumber;
-  } on FormatException {
-    throw SomeError.showError;
-  }
-}
+//class SomeError implements Exception{
+//   static String get showError{
+//    return 'something went wrong' ;
+//   }
+// }
+// int getData(){
+//   try {
+//     final data = 'helfkidsjf';
+//     final inNumber = int.parse(data);
+//     return inNumber;
+//   } on FormatException {
+//     throw SomeError.showError;
+//   }
+// }
  // await Future.delayed(Duration(seconds: 2));
   //throw Exception('something went wrong');
   //print('hello jii');
@@ -38,12 +38,12 @@ int getData(){
 
 
 void main (){
-  try {
-    final g = getData();
-    print(g);
-  }catch (err){
-    print(err);
-  }
+  // try {
+  //   final g = getData();
+  //   print(g);
+  // }catch (err){
+  //   print(err);
+  // }
 
   //getData().then((value) => print(value)).catchError((err) => print('err: $err'));
   
