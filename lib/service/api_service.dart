@@ -11,8 +11,10 @@ class ApiServices{
 
   static Future getMealData () async{
     try{
-      final response = await dio.post('https://translate-plus.p.rapidapi.com/translate',
+      final response = await dio.post('https://translate-plus.p.rapidapi.com/translate?query=horror&page=5',
       queryParameters: {
+        'query': 'hudhksdh',
+        'page': 5
 
       },
       data: {
