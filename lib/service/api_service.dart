@@ -6,7 +6,7 @@ import 'package:flutterspod/constants/api.dart';
 
 import 'package:flutterspod/shared/client_provider.dart ';
 
-final apiSevice = Provider((ref) => ApiService(ref.watch(clientProvider)));
+final apiService = FutureProvider((ref) => ApiService(ref.watch(clientProvider)).getMovieCategory());
 class ApiService{
   //static final dio = Dio(
   //     BaseOptions(
@@ -18,7 +18,7 @@ class ApiService{
   ApiService(this.dio);
 
 
-   Future<List<Movie>> getMealData () async{
+   Future<List<Movie>> getMovieCategory () async{
     try{
       // final response = await dio.post('https://translate-plus.p.rapidapi.com/translate?query=horror&page=5',
       // queryParameters: {
