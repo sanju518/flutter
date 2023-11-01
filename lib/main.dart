@@ -71,10 +71,9 @@ class Home extends StatelessWidget {
       splitScreenMode: true,
       builder: (c, s) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.light(
+        theme: ThemeData.dark(
             useMaterial3: true
         ).copyWith(
-          scaffoldBackgroundColor: AppColors.mainColor,
 
 
 
@@ -84,8 +83,14 @@ class Home extends StatelessWidget {
 
 
 
-              backgroundColor: AppColors.mainColor
+
           ),
+            textTheme: TextTheme(
+                titleMedium: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500
+                )
+            )
         ),
         home: HomePage(),
         //home: exercise(),
