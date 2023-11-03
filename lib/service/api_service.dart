@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutterspod/constants/api.dart';
 import 'package:flutterspod/models/movie.dart';
 import 'package:flutterspod/shared/client_provider.dart';
+
+import 'package:flutterspod/constants/api.dart';
 
 
 
@@ -33,6 +34,23 @@ class ApiService {
   }
 
 
+
+
+  Future<Either<String, List<Movie>>> getSearchMovie({required String query})async{
+    try{
+      final response = await dio.get(Api.getSearchMovie,
+        queryParameters: {
+          'page': 1
+        },
+      );
+      return Right((response.data['results'] as List).map(
+              (e) => Movie.fromJson(e)).toList());
+    }on DioException catch(err){
+      return Left('${err.response}');
+    }
+
+
+  }
 
 
 

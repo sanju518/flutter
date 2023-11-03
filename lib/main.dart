@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterspod/constants/app_colors.dart';
 import 'package:flutterspod/views/home_page.dart';
 import 'package:get/get.dart';
 
@@ -71,7 +70,7 @@ class Home extends StatelessWidget {
       splitScreenMode: true,
       builder: (c, s) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark(
+        theme: ThemeData.light(
             useMaterial3: true
         ).copyWith(
 
