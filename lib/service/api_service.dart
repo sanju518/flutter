@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutterspod/models/movie.dart';
-import 'package:flutterspod/shared/client_provider.dart';
-
 import 'package:flutterspod/constants/api.dart';
+import 'package:flutterspod/models/movie.dart';
+import 'package:flutterspod/models/video.dart';
+import 'package:flutterspod/shared/client_provider.dart';
 
 
 
@@ -35,16 +35,21 @@ class ApiService {
 
 
 
-
   Future<Either<String, List<Movie>>> getSearchMovie({required String query})async{
     try{
       final response = await dio.get(Api.getSearchMovie,
         queryParameters: {
-          'page': 1
+          'query': query
         },
       );
-      return Right((response.data['results'] as List).map(
-              (e) => Movie.fromJson(e)).toList());
+      final res = response.data['results'] as List;
+      if(res.isEmpty){
+        return Left('Please search with valid keyword');
+
+      }else {
+        return Right(res.map(
+                (e) => Movie.fromJson(e)).toList());
+      }
     }on DioException catch(err){
       return Left('${err.response}');
     }
@@ -52,6 +57,23 @@ class ApiService {
 
   }
 
+
+
+  Future<List<Video>> getMovieVideo({required int id})async{
+    try{
+      final response = await dio.get('/movie/${id}/videos');
+      final res = response.data['results'] as List;
+      if(res.isEmpty) {
+        throw'there is no video available ';
+      }else {
+        return res.map((e) => Video.fromJson(e)).toList();
+      }
+    }on DioException catch(err){
+      throw'${err.response}';
+    }
+
+
+  }
 
 
 }

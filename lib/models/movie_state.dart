@@ -24,11 +24,11 @@ class MovieState{
     int? page,
   }){
     return MovieState(
-        isError: isError ?? this.isError,
-        isLoad: isLoad ?? this.isLoad,
-        errMessage: errMessage ?? this.errMessage,
-        movies: movies ?? this.movies,
-        page: page ?? this.page,
+      isError: isError ?? this.isError,
+      isLoad: isLoad ?? this.isLoad,
+      errMessage: errMessage ?? this.errMessage,
+      movies: movies ?? this.movies,
+      page: page ?? this.page,
     );
   }
 
@@ -39,9 +39,8 @@ class MovieState{
         'isError: ${isError}, '
         'isLoad: ${isLoad}, '
         'errMessage: ${errMessage}, '
-        'movies: ${movies},'
-
-    ')';
+        'movies: ${movies}, '
+        ')';
   }
 
 
