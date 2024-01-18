@@ -1,34 +1,25 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutterspod/models/movie_state.dart';
-import 'package:flutterspod/service/api_service.dart';
+//import 'package:podsriver/api_service/movie_service.dart';
+//import 'package:podsriver/models/movie.dart';
+
+import '../api_service/movie_service.dart';
+import '../models/movie.dart';
 
 
-final emptyMovie = MovieState(
-  isError: false,
-  isLoad: false,
-  errMessage: '',
-  movies: [],
-  page: 1,
-);
+final searchProvider = AsyncNotifierProvider(() => SearchProvider());
 
 
+class SearchProvider extends AsyncNotifier{
 
-final searchProvider =
-StateNotifierProvider.autoDispose<SearchProvider, MovieState>((ref)
-=> SearchProvider(emptyMovie,  service: ref.watch(apiService)));
+  @override
+  Future<List<Movie>> build() async{
+    return [];
+  }
 
-class SearchProvider extends StateNotifier<MovieState>{
-  final ApiService service;
 
-  SearchProvider(super.state, {required this.service});
-
-  Future<void>  getSearchMovie({required String query})async{
-    state = state.copyWith(isLoad: true, isError: false);
-    final response = await service.getSearchMovie(query: query);
-    response.fold(
-            (l) => state = state.copyWith(isError: true,isLoad: false, errMessage: l),
-            (r) => state = state.copyWith(isError: false,isLoad: false,
-            movies: [...state.movies, ...r]));
+  Future<void> getSearchData(String searchText) async{
+    state = const AsyncLoading();
+    state  = await AsyncValue.guard(() => MovieService.getSearch(searchText: searchText));
   }
 
 

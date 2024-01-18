@@ -1,35 +1,26 @@
 
 
+
 class Video {
+
+  final String name;
   final String key;
-  final String site;
-  final String type;
-  final String published_at;
+  final String publishedAt;
   final String id;
 
-  Video(
-      {required this.id,
-        required this.type,
-        required this.key,
-        required this.published_at,
-        required this.site});
+  Video({
+    required this.name,
+    required this.key,
+    required this.publishedAt,
+    required this.id,
+  });
 
-  factory Video.fromJson(Map<String, dynamic> json){
+  factory Video.fromJson(Map<String, dynamic> json) {
     return Video(
-        id: json['id'],
-        type: json['type'],
-        key: json['key'],
-        published_at: json['published_at'],
-        site: json['site']
+      name: json['name'],
+      key: json['key'],
+      publishedAt: json['published_at'],
+      id: json['id'],
     );
   }
-
-  void mo(){
-
-  }
-
-  void so(){
-
-  }
-
 }
