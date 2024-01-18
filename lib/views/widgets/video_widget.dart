@@ -3,7 +3,6 @@
 import 'package:flutterspod/models/video.dart';
 import 'package:pod_player/pod_player.dart';
 import 'package:flutter/material.dart';
-//import 'package:podsriver/models/video.dart';
 
 class PlayVideoFromNetwork extends StatefulWidget {
   final Video video;

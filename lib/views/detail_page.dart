@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterspod/provider/movie_provider.dart';
 import 'package:flutterspod/views/widgets/video_widget.dart';
-//import 'package:podsriver/models/movie.dart';
-//import 'package:podsriver/provider/movie_provider.dart';
-//import 'package:podsriver/views/widgets/video_widget.dart';
 
 import '../models/movie.dart';
 

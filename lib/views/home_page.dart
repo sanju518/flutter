@@ -4,9 +4,6 @@ import 'package:flutterspod/constants/api.dart';
 import 'package:flutterspod/views/search_page.dart';
 import 'package:flutterspod/views/widgets/tab_bar_widget.dart';
 import 'package:get/get.dart';
-//import 'package:podsriver/constants/api.dart';
-//import 'package:podsriver/views/search_page.dart';
-//import 'package:podsriver/views/widgets/tab_bar_widgets.dart';
 
 
 

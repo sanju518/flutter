@@ -4,9 +4,6 @@ import 'package:flutterspod/constants/app_sizes.dart';
 import 'package:flutterspod/provider/search_provider.dart';
 import 'package:flutterspod/views/detail_page.dart';
 import 'package:get/get.dart';
-//import 'package:podsriver/constants/app_sizes.dart';
-//import 'package:podsriver/provider/search_provider.dart';
-//import 'package:podsriver/views/detail_page.dart';
 
 
 class SearchPage extends ConsumerWidget {

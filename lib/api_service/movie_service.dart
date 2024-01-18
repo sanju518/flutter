@@ -1,7 +1,4 @@
 import 'package:dio/dio.dart';
-//import 'package:podsriver/constants/api.dart';
-//import 'package:podsriver/models/movie.dart';
-//import 'package:podsriver/models/video.dart';
 
 import '../constants/api.dart';
 import '../models/movie.dart';

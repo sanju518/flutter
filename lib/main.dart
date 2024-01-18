@@ -3,8 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterspod/constants/app_colors.dart';
 import 'package:flutterspod/views/home_page.dart';
 import 'package:get/get.dart';
-//import 'package:podsriver/constants/colors.dart';
-//import 'package:podsriver/views/home_page.dart';
 
 
 
