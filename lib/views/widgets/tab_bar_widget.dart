@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterspod/provider/movie_provider.dart';
 import 'package:flutterspod/views/detail_page.dart';
 import 'package:get/get.dart';
-//import 'package:lottie/lottie.dart';
+import 'package:lottie/lottie.dart';
 
 
 
@@ -51,7 +51,7 @@ class TabBarWidgets extends ConsumerWidget {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      //Lottie.asset('assets/images/internet.json'),
+                      Lottie.asset('assets/images/internet.json'),
                       ElevatedButton(
                           onPressed: (){
                             ref.invalidate(movieProvider);
@@ -64,7 +64,7 @@ class TabBarWidgets extends ConsumerWidget {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      //Lottie.asset('assets/images/noConnect.json'),
+                      Lottie.asset('assets/images/noConnect.json'),
                       ElevatedButton(
                           onPressed: (){
                             ref.invalidate(movieProvider(api));
