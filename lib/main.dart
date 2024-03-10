@@ -1,14 +1,41 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterspod/constants/app_colors.dart';
-import 'package:flutterspod/views/home_page.dart';
-import 'package:flutterspod/views/response.dart';
-import 'package:flutterspod/views/sample.dart';
+import 'package:flutterspod/models/cart.dart';
+import 'package:flutterspod/models/user.dart';
+import 'package:flutterspod/views/status_page.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 
-void main (){
-  runApp(Home());
+final boxA = Provider<User?>((ref) => null);
+final boxB = Provider<List<CartItem>>((ref) => []);
+
+
+void main () async{
+
+
+ WidgetsFlutterBinding.ensureInitialized();
+ await Future.delayed(Duration(milliseconds: 500));
+
+ await Hive.initFlutter();
+ Hive.registerAdapter(CartItemAdapter());
+ final userBox = await Hive.openBox('userBox');
+ final cartBox = await Hive.openBox<CartItem>('cartBox');
+
+ final user = userBox.get('user');
+
+runApp(
+    ProviderScope(
+    overrides: [
+       boxA.overrideWithValue(user == null ? null: User.fromJson(jsonDecode(user))),
+      boxB.overrideWithValue(cartBox.values.toList())
+    ],
+    child: Home()
+));
+
 }
 
 
@@ -19,38 +46,30 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
-    print(h);
-    print(w);
+
     return ScreenUtilInit(
       designSize: Size(w, h),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (c, s) => GetMaterialApp(
+        title: "It's On",
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.light(
-            useMaterial3: true
-        ).copyWith(
-          scaffoldBackgroundColor: AppColors.mainColor,
+         theme: ThemeData.dark(
+           useMaterial3: true
+         ).copyWith(
 
+           appBarTheme: AppBarTheme(
 
-
-
-
-          appBarTheme: AppBarTheme(
-
-
-
-              backgroundColor: AppColors.mainColor
-          ),
-        ),
-        home: HomePage(),
-        //home: exercise(),
-        //home: MyApp(),
-       // home: Sample(),
-       // home: ResponsePage(),
+           ),
+           // textTheme: TextTheme(
+           //   titleMedium: TextStyle(
+           //     fontSize: 30,
+           //     fontWeight: FontWeight.w500
+           //   )
+           // )
+         ),
+      home: StatusPage(),
       ),
     );
   }
-
 }
-
