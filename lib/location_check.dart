@@ -1,42 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:flutterspod/map_show.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:get/get.dart';
+
+import 'map_show.dart';
 
 
-
-class LocationCheck extends StatelessWidget {
-
-
-  Position? position;
-
+class CheckLocation extends StatefulWidget {
+  const CheckLocation({super.key});
 
   @override
-  Widget build(BuildContext){
+  State<CheckLocation> createState() => _CheckLocationState();
+}
+
+class _CheckLocationState extends State<CheckLocation> {
+
+  Position? _position;
+  LocationPermission? permission;
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () async{
-            final permission = await Geolocator.checkPermission();
+        appBar: AppBar(),
+        body: Center(
+          child: ElevatedButton(
+              onPressed: () async{
+                print('aslkdjdsl');
+                try{
+                  permission =  await  Geolocator.checkPermission();
+                  print(permission);
+                  if(permission == LocationPermission.denied){
+                    permission=  await Geolocator.checkPermission();
+                  }else if(permission == LocationPermission.deniedForever){
+                    await Geolocator.openAppSettings();
+                  }else{
+                    _position = await Geolocator.getCurrentPosition(
+                        desiredAccuracy: LocationAccuracy.high
+                    );
+                    if(_position !=null){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => MapSample(lat: _position!.latitude, long: _position!.longitude,)));
+                    }
+                  }
+                }catch (err){
+                  print(err);
+                }
 
-            if(permission == LocationPermission.denied){
-             await Geolocator.checkPermission();
-            }else if(permission == LocationPermission.deniedForever){
-              await Geolocator.openAppSettings();
-            }else{
-              position = await Geolocator.getCurrentPosition(
-                desiredAccuracy: LocationAccuracy.high);
-              if(position == null){
-                Get.to(() => MapSample(lat: position!.altitude,long: position!.longitude,));
-              }
-            }
 
 
-          }, child: Text('Location')
+              }, child: const Text('Location')),
         )
-      )
-
-      );
-
+    );
   }
 }
